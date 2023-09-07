@@ -1,34 +1,28 @@
---Create a grocery store database
+--Create a film database
 
-CREATE TABLE store (id INTEGER PRIMARY KEY, item TEXT, section TEXT, price INTEGER, popularity INTEGER);
+CREATE TABLE film (id INTEGER PRIMARY KEY, title TEXT, genre TEXT, rating TEXT, year INTEGER);
 
-INSERT INTO store VALUES (1, "papaya", "produce", 2.99, 50);
-INSERT INTO store VALUES (2, "banana", "produce", 0.99, 95);
-INSERT INTO store VALUES (3, "qtips", "hygiene", 2.99, 55);
-INSERT INTO store VALUES (4, "beans", "bulk", 0.99, 50);
-INSERT INTO store VALUES (5, "beyond burgers", "meat", 4.99, 65);
-INSERT INTO store VALUES (6, "salsa", "fresh", 3.25, 43);
-INSERT INTO store VALUES (7, "hummus", "fresh", 2.99, 35);
-INSERT INTO store VALUES (8, "papaya", "hygiene", 2.99, 50);
-INSERT INTO store VALUES (9, "chick'n nuggs", "meat", 4.99, 75);
-INSERT INTO store VALUES (10, "peas", "frozen", 0.99, 25);
-INSERT INTO store VALUES (11, "smoothie berries", "frozen", 2.99, 33);
-INSERT INTO store VALUES (12, "granola", "bulk", 1.99, 80);
-INSERT INTO store VALUES (13, "vitamin D", "health", 8.99,29);
-INSERT INTO store VALUES (14, "nutritional yeast", "health", 2.99, 26);
-INSERT INTO store VALUES (15, "popcorn", "snacks", 1.99, 47);
+INSERT INTO film VALUES (1,"the godfather", "drama", "r", 1972);
+INSERT INTO film VALUES (2,"the shawshank redemption", "drama", "r" , 1994);
+INSERT INTO film VALUES (3,"the godfather ii", "drama", "r", 1974);
+INSERT INTO film VALUES (4,"titanic", "drama", "pg-13", 1997);
+INSERT INTO film VALUES (5,"inception", "sci-fi", "pg-13", 2010);
+INSERT INTO film VALUES (6,"the lord of the rings", "fantasy", "pg-13", 2001);
+INSERT INTO film VALUES (7,"the silence of the lambs", "horror", "r", 1991);
+INSERT INTO film VALUES (8,"taxi driver", "drama", "r", 1976);
+INSERT INTO film VALUES (9,"schindler's list ", "drama", "r", 1993);
+INSERT INTO film VALUES (10,"forrest gump", "comedy", "pg-13",1994);
+INSERT INTO film VALUES (11,"casablanca", "drama", "pg", 1942);
+INSERT INTO film VALUES (12,"good fellas", "drama", "r", 1990);
+INSERT INTO film VALUES (13,"12 angry men", "drama", "pg-13",1957);
+INSERT INTO film VALUES (14,"2001: a space odyssey ", "sci-fi", "g", 1968);
+INSERT INTO film VALUES (15,"saving private ryan ", "drama", "r", 1998);
 
---display the database ordered by price. 
-SELECT * FROM store
-ORDER BY price desc; 
+SELECT * FROM film
+ORDER BY year desc; 
 
---what is the avg price of items in the bulk section? 
-SELECT AVG(price) "avg bulk item price"
-FROM store
-where section='bulk'; 
+SELECT title, genre, rating
+FROM film
+order by rating desc;
 
---what are the most 5 popular items? 
-SELECT item, price, popularity
-FROM store
-order by popularity desc
-limit 5; 
+SELECT rating, COUNT(*) FROM film GROUP BY rating;
